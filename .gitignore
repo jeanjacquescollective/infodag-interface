@@ -1,0 +1,16 @@
+# Vite build output
+dist/
+
+# Local Vite server cache
+.vite/
+
+# Vite log files
+vite-error.log
+
+# Vite config files
+vite.config.js
+vite.config.ts
+vite.config.mjs
+vite.config.cjs
+
+node_modules/

@@ -1,0 +1,220 @@
+/* Copyright 2023 The MediaPipe Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. */
+
+:root {
+  --artevelde-cmd: rgb(126, 87, 197);
+}
+
+@font-face {
+  font-family: 'Source-sans-pro';
+  src: url('assets/source-sans-pro/SourceSansPro-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source-sans-pro';
+  src: url('assets/source-sans-pro/SourceSansPro-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+@use "@material";
+body {
+  font-family: 'Source-sans-pro', sans-serif;
+
+  color: #3d3d3d;
+  --mdc-theme-primary: var(--artevelde-cmd);
+  --mdc-theme-on-primary: #f1f3f4;
+}
+
+h1 {
+  color: #007f8b;
+}
+
+h2 {
+  clear: both;
+}
+
+em {
+  font-weight: bold;
+}
+
+video {
+  clear: both;
+  display: block;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+section {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+header,
+footer {
+  clear: both;
+}
+
+.removed {
+  display: none;
+}
+
+.invisible {
+  opacity: 0.2;
+}
+
+.note {
+  font-style: italic;
+  font-size: 130%;
+}
+
+.videoView,
+.detectOnClick {
+  float: left;
+  cursor: pointer;
+}
+
+.videoView p,
+.detectOnClick p {
+  position: absolute;
+  background-color: #007f8b;
+  color: #fff;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+  z-index: 2;
+  font-size: 12px;
+  margin: 0;
+}
+
+.highlighter {
+  background: rgba(0, 255, 0, 0.25);
+  border: 1px dashed #fff;
+  z-index: 1;
+  position: absolute;
+}
+
+.canvas {
+  z-index: 1;
+  position: absolute;
+  pointer-events: none;
+}
+
+.output_canvas {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.detectOnClick {
+  z-index: 0;
+}
+
+.detectOnClick img {
+  width: 100%;
+}
+
+
+.prediction-output-container{
+  width: 100vw !important;
+  height: 100vh !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+video, canvas{
+  width: 100%;;
+  height: auto;
+}
+
+.mdc-button {
+  z-index: 5;
+}
+
+.interactable-image{
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 150px;
+  aspect-ratio: 1/1;
+  rotate: 0;
+  transition: all 3s ease-in-out;
+}
+
+.interactable-image-wrapper{
+  rotate: 0;
+  transition: all 3s ease-in-out;
+  display: inline-block;
+}
+
+.interactable-image-wrapper.active{
+  rotate: 180deg;
+}
+
+.interactable-image.active {
+  animation: activeAnimation 1s ease-in-out infinite;
+}
+
+video {
+
+  filter: grayscale(100%) sepia(100%);
+
+  mix-blend-mode: screen;
+
+}
+
+.duotone-overlay {
+
+  position: absolute;
+
+  background-color: #ff0ade; 
+
+  mix-blend-mode:color;
+
+  width: 100vw;
+  height: 100vh;
+
+}
+
+
+@keyframes activeAnimation {
+  0% {
+    transform: scale(1) ;
+    box-shadow: 0 0 0 rgba(126, 87, 197, 0);
+  }
+  50% {
+    transform: scale(.9);
+    box-shadow: 0 0 20px rgba(126, 87, 197, 0.7);
+  }
+  100% {
+    transform: scale(1) ;
+    box-shadow: 0 0 0 rgba(126, 87, 197, 0);
+  }
+}
+
+.interactable-elements{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ui{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
